@@ -58,3 +58,15 @@ func exercise2() {
 }
 
 exercise2()
+
+func loveCalculator(){
+    let randomNumber = Int.random(in: 0..<100)
+    if randomNumber >= 80{
+        print("Noone loves Kanye Like Kanye loves Kanye")
+    } else if randomNumber >= 40 && randomNumber <= 80{print("coke and menthos") }
+        
+        else {
+        print("forever alone")
+        }
+    }
+loveCalculator()

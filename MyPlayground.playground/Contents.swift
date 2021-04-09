@@ -70,3 +70,45 @@ func loveCalculator(){
         }
     }
 loveCalculator()
+
+struct User {
+        var name: String
+        var email: String?
+        var followers: Int
+        var isActive: Bool
+    
+
+    
+        
+        func logStatus() {
+            if isActive {
+              print("\(name) is working hard")
+            } else {
+                 print("\(name) has left earth")
+            }
+        }
+    }
+
+
+var richard = User(name: "Richard", followers: 0, isActive: false)
+richard.logStatus()
+
+
+let greeting = "Guten Tag!"
+greeting[greeting.startIndex]
+// G
+greeting[greeting.index(before: greeting.endIndex)]
+// !
+greeting[greeting.index(after: greeting.startIndex)]
+// u
+let index = greeting.index(greeting.startIndex, offsetBy: 7)
+greeting[index]
+
+
+func greet(person: String) -> String {
+    let greeting = "Hello \(person)!"
+    return greeting
+}
+
+greet(person: "Fred")
+print(person)

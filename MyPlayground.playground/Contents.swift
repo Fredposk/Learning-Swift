@@ -24,7 +24,7 @@ b = c
 print("\(a) and \(b)")
 
 func exercise1() {
-
+    
     let numbers = [45, 73, 195, 53]
     
     //Write your code here
@@ -32,7 +32,7 @@ func exercise1() {
     
     
     print(computedNumbers)
-
+    
 }
 
 exercise1()
@@ -45,11 +45,11 @@ func exercise2() {
     
     //The number of letters in alphabet equals 26
     
-//    let first = alphabet.randomElement()
+    //    let first = alphabet.randomElement()
     
-   var password = ""
+    var password = ""
     while password.count < 6 {
-       password += alphabet.randomElement()!
+        password += alphabet.randomElement()!
     }
     
     print(password)
@@ -64,30 +64,30 @@ func loveCalculator(){
     if randomNumber >= 80{
         print("Noone loves Kanye Like Kanye loves Kanye")
     } else if randomNumber >= 40 && randomNumber <= 80{print("coke and menthos") }
-        
-        else {
+    
+    else {
         print("forever alone")
-        }
     }
+}
 loveCalculator()
 
 struct User {
-        var name: String
-        var email: String?
-        var followers: Int
-        var isActive: Bool
+    var name: String
+    var email: String?
+    var followers: Int
+    var isActive: Bool
     
-
     
-        
-        func logStatus() {
-            if isActive {
-              print("\(name) is working hard")
-            } else {
-                 print("\(name) has left earth")
-            }
+    
+    
+    func logStatus() {
+        if isActive {
+            print("\(name) is working hard")
+        } else {
+            print("\(name) has left earth")
         }
     }
+}
 
 
 var richard = User(name: "Richard", followers: 0, isActive: false)
@@ -112,3 +112,10 @@ func greet(person: String) -> String {
 
 greet(person: "Fred")
 print(person)
+
+func double (number1: Int, number2: Int) {
+    number1 * number2
+    
+}
+
+double(number1: 3, number2: 5)

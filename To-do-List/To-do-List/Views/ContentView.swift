@@ -24,7 +24,6 @@ struct ContentView: View {
 //                            taskListVM.taskCellViewModel.remove(at: index)
 //                        }
 //                    })
-//
                     if (presentAddNewItem){
                         TaskCell(TaskCellVM: TaskCellViewModel(task: Task(title: "", completed: false))) {
                             task in self.taskListVM.addTask(task: task)

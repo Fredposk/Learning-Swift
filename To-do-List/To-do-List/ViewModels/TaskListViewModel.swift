@@ -23,5 +23,8 @@ class TaskListViewModel: ObservableObject {
         taskCellViewModel.append(taskVM)
     }
     
+    func deleteTask(index: String){
+        print("\(index)")
+    }
     
 }

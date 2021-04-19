@@ -27,8 +27,7 @@ struct ContentView: View {
                     ForEach(0..<RockPaperScissors.count) {
                         number in Button(RockPaperScissors[number], action: {
                             isChosenAnswer = RockPaperScissors[number]
-                            
-                        }).padding().background(Color.white).foregroundColor(.black).cornerRadius(15)
+                        }).padding().background(isChosenAnswer == RockPaperScissors[number] ? Color.gray : Color.white).foregroundColor(.black).cornerRadius(15)
                     }
                 }
                 Spacer()

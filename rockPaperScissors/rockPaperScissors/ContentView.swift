@@ -21,12 +21,13 @@ struct ContentView: View {
                 ZStack {
                     RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/).frame(width: 250, height: 250, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/).foregroundColor(.blue)
                     Text("\(RockPaperScissors[0])")
-                }.padding(.top, 100)
+                }.padding(.vertical, 80)
                 
                 HStack {
                     ForEach(0..<RockPaperScissors.count) {
                         number in Button(RockPaperScissors[number], action: {
                             isChosenAnswer = RockPaperScissors[number]
+                            GameLogic(userChoice: isChosenAnswer)
                         }).padding().background(isChosenAnswer == RockPaperScissors[number] ? Color.gray : Color.white).foregroundColor(.black).cornerRadius(15)
                     }
                 }
@@ -46,18 +47,43 @@ struct ContentView: View {
     func newRound() {
         winOrLose()
         RockPaperScissors.shuffle()
+        isChosenAnswer = ""
     }
     func gameOver() {
         if playerScore >= 10 {
             isGameOver = true
         }
     }
-    func GameLogic(computerChoice: String){
-        if computerChoice == isChosenAnswer {
-            print("no point")
-        } else if isChosenAnswer == "rock" && computerChoice == "paper" {
-            print("user wins")
+    func GameLogic(userChoice: String){
+
+
+        if iswinOrlose {
+            switch userChoice {
+            case "rock":
+                print("chose rock")
+            case "paper":
+                print("chose paper")
+            case "scissors":
+                print("chose scissor")
+            default:
+                print("no points")
+            }
+        } else {
+            switch userChoice {
+            case "rock":
+                print("chose rock lose")
+            case "paper":
+                print("chose paper lose")
+            case "scissors":
+                print("chose scissor lose")
+            default:
+                print("no points")
+            }
         }
+
+
+
+
     }
     
     

@@ -9,22 +9,18 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
+
         ScrollView {
             SummaryView()
-            TabView {
-                ActivityView()
-                ActivityView()
-                ActivityView()
-            }.tabViewStyle(PageTabViewStyle()).padding(.horizontal)
-
-
-
-        }.background(Color.black).edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+            ActivityView()
+        }
     }
 }
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
     }
 }
+

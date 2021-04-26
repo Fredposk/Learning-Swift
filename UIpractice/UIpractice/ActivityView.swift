@@ -22,7 +22,11 @@ struct ActivityView: View {
                 }.padding()
                 Spacer()
 
-                ringView(to: 0.86, width: 150, height: 150)
+                ZStack {
+                    ringView(to: 0.86, width: 150, height: 150, color: .red)
+                    ringView(to: 0.90, width: 126, height: 126, color: .green)
+                    ringView(to: 0.56, width: 104, height: 104, color: Color.blue)
+                }
 
             }.padding()
             .background(Color(.secondarySystemBackground))
@@ -62,16 +66,18 @@ struct ringView: View {
     let to: CGFloat
     let width: CGFloat
     let height: CGFloat
+    let color: Color
 
     var body: some View {
         ZStack {
             Circle()
                 .stroke(lineWidth: 12)
-                .foregroundColor(Color.red.opacity(0.5))
+                .foregroundColor(color.opacity(0.5))
             Circle()
                 .trim(from: 0, to: to)
-                .stroke(Color.red, style: StrokeStyle(lineWidth: 12, lineCap: .round))
+                .stroke(style: StrokeStyle(lineWidth: 1, lineCap: .round))
+                .stroke(color, style: StrokeStyle(lineWidth: 12, lineCap: .round))
                 .rotationEffect(.degrees(-90))
-        } .frame(width: 150, height: 150)
+        } .frame(width: width, height: height)
     }
 }

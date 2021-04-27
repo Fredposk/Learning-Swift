@@ -119,3 +119,22 @@ func double (number1: Int, number2: Int) {
 }
 
 double(number1: 3, number2: 5)
+
+
+func hasUniqueCharacters(word: String) -> Bool {
+
+    var uniqueCharacters = Set<Character>()
+          for char in word {
+            guard !uniqueCharacters.contains(char)else {
+                return false
+            }
+                uniqueCharacters.insert(char)
+
+//              guard !uniqueCharacters.contains(char) else { return false }
+//              uniqueCharacters.insert(char)
+//          }
+
+          };   return true}
+
+
+hasUniqueCharacters(word: "Frederico")

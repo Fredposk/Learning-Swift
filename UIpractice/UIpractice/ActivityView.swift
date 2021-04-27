@@ -50,7 +50,6 @@ struct ActivityTextView: View {
     let labelThree: String
     let color: Color
 
-
     var body: some View {
         VStack (alignment: .leading) {
             Text(labelOne)
@@ -62,7 +61,6 @@ struct ActivityTextView: View {
 }
 
 struct ringView: View {
-
     let to: CGFloat
     let width: CGFloat
     let height: CGFloat

@@ -12,6 +12,7 @@
 		4084215F2637F6B80032155F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4084215E2637F6B80032155F /* ContentView.swift */; };
 		408421612637F6BB0032155F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 408421602637F6BB0032155F /* Assets.xcassets */; };
 		408421642637F6BB0032155F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 408421632637F6BB0032155F /* Preview Assets.xcassets */; };
+		40AEC7A52639B4E200F37AEA /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AEC7A42639B4E200F37AEA /* AddView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		408421602637F6BB0032155F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		408421632637F6BB0032155F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		408421652637F6BB0032155F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		40AEC7A42639B4E200F37AEA /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 			children = (
 				4084215C2637F6B80032155F /* iExpenseApp.swift */,
 				4084215E2637F6B80032155F /* ContentView.swift */,
+				40AEC7A42639B4E200F37AEA /* AddView.swift */,
 				4028E2BE2638AE6800B66CC8 /* TestingView.swift */,
 				408421602637F6BB0032155F /* Assets.xcassets */,
 				408421652637F6BB0032155F /* Info.plist */,
@@ -141,6 +144,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40AEC7A52639B4E200F37AEA /* AddView.swift in Sources */,
 				4084215F2637F6B80032155F /* ContentView.swift in Sources */,
 				4084215D2637F6B80032155F /* iExpenseApp.swift in Sources */,
 				4028E2BF2638AE6800B66CC8 /* TestingView.swift in Sources */,

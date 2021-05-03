@@ -12,6 +12,8 @@ struct AddView: View {
     @State private var name = ""
     @State private var type = "Personal"
     @State private var amount = ""
+    @Environment(\.presentationMode) var presentationMode
+    @State private var isShowing = false
      let types = ["Business", "Personal"]
     var body: some View {
 
@@ -25,16 +27,23 @@ struct AddView: View {
                 }
                 TextField("Add Amount", text: $amount).keyboardType(.numberPad)
             }.navigationBarTitle("Add Expense")
-            .navigationBarItems(trailing: Button(action: {
+            .navigationBarItems(leading: Button(action: {
+                presentationMode.wrappedValue.dismiss()
+            }, label: {
+                Text("Cancel")
+            }),trailing: Button(action: {
                 if let actualAmount = Int(amount) {
                     let newExpense = ExpenseItem(name: name, type: type, amount: actualAmount)
                     self.expenses.items.append(newExpense)
+                    presentationMode.wrappedValue.dismiss()
+                } else {
+                    isShowing = true
                 }
-
-
             }, label: {
                 Text("Save")
             }))
+        }.alert(isPresented: $isShowing) {
+            Alert(title: Text("Alert"), message: Text("Please enter valid amount"), dismissButton: .cancel())
         }
 
 
@@ -44,5 +53,6 @@ struct AddView: View {
 struct AddView_Previews: PreviewProvider {
     static var previews: some View {
         AddView(expenses: Expenses())
+
     }
 }

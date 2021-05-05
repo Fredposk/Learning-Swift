@@ -26,7 +26,7 @@ struct MissionView: View {
                         .aspectRatio(contentMode: .fit)
                         .frame(maxWidth: geometry.size.width * 0.6)
                         .padding(.top)
-
+                    Text(self.mission.formattedLaunchDate).font(.subheadline)
                     Text(self.mission.description)
                         .padding()
                         .layoutPriority(1)

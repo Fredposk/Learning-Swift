@@ -33,5 +33,15 @@ struct Movie: Identifiable, Decodable {
         }
     }
 
+    var genres: [Genre] {
+        genreIds.compactMap { Genre.all[$0] }
+//        Genre.all.compactMap { key, value in
+//            genreIds.contains(key) ? value : nil
+//        }
+    .sorted {
+            $0.name > $1.name
+        }
+    }
+
     static let example = Movie(id: 0, title: "Batman", overview: "Rich man beats up poor street criminals.", releaseDate: "1989-01-01", voteAverage: 10, posterPath: "/tDexQyu6FWltcd0VhEDK7uib42f.jpg", backdropPath: "/2va32apQP97gvUxaMnL5wYt4CRB.jpg", genreIds: [12, 14, 16, 18, 27, 28])
 }

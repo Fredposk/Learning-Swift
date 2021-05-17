@@ -40,6 +40,19 @@ struct MovieDetailView: View {
                 .background(Color.black)
 
             }
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 3) {
+                    ForEach(movie.genres) { genre in
+                        Text(genre.name)
+                            .foregroundColor(.white)
+                            .padding(.horizontal, 10)
+                            .padding(.vertical, 2)
+                            .background(Color(genre.color))
+                            .clipShape(Capsule())
+
+                    }
+                }
+            }.padding(.horizontal, 20)
             Text(movie.overview)
                 .padding([.horizontal, .bottom])
         }
@@ -51,7 +64,7 @@ struct MovieDetailView: View {
 struct MovieDetailView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            MovieDetailView(movie: .example)
+            MovieDetailView(movie: Movie.example)
         }
 
     }

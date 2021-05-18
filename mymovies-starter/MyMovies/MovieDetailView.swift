@@ -12,6 +12,26 @@ struct MovieDetailView: View {
     let movie: Movie
 
     @State private var details = Bundle.main.decode(MovieDetails.self, from: "details.json")
+    @State private var credits = Bundle.main.decode(Credits.self, from: "credits.json", keyDecodingStrategy: .convertFromSnakeCase)
+
+    @State private var showingAllCast = false
+    @State private var showingAllCrew = false
+
+    var displayedCast: [CastMember] {
+        if showingAllCast {
+            return credits.cast
+        } else {
+            return Array(credits.cast.prefix(5))
+        }
+    }
+
+    var displayedCrew: [CrewMember] {
+        if showingAllCrew {
+            return credits.crew
+        } else {
+            return Array(credits.crew.prefix(5))
+        }
+    }
 
     var body: some View {
         ScrollView {
@@ -55,7 +75,55 @@ struct MovieDetailView: View {
             }.padding(.horizontal, 20)
             Text(movie.overview)
                 .padding([.horizontal, .bottom])
+
+            Group {
+                Text("Cast")
+                    .font(.title)
+
+                ForEach(displayedCast) { person in
+                    VStack(alignment: .leading){
+                        Text(person.name)
+                            .font(.headline)
+                        Text(person.character)
+                            .font(.subheadline)
+                    }
+                    .padding(.bottom, 1)
+                }
+                if showingAllCast == false {
+                    Button("Show all") {
+                        withAnimation {
+                            showingAllCast.toggle()
+                        }
+                    }
+                    .padding(.vertical)
+
+                }
+
+                Text("Crew")
+                    .font(.title)
+                ForEach(displayedCrew) { person in
+                    VStack(alignment: .leading){
+                        Text(person.name)
+                            .font(.headline)
+                        Text(person.job)
+                            .font(.subheadline)
+                    }
+                    .padding(.bottom, 1)
+                }
+
+                if showingAllCrew == false {
+                    Button("Show all") {
+                        showingAllCrew.toggle()
+                    }
+                    .padding()
+                }
+
+            }
+
         }
+
+
+
         .navigationTitle(movie.title)
         .navigationBarTitleDisplayMode(.inline)
     }

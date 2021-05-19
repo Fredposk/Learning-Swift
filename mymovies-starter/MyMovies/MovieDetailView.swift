@@ -7,17 +7,26 @@
 
 import SDWebImageSwiftUI
 import SwiftUI
+import Combine
 
 struct MovieDetailView: View {
     let movie: Movie
 
-    @State private var details = Bundle.main.decode(MovieDetails.self, from: "details.json")
-    @State private var credits = Bundle.main.decode(Credits.self, from: "credits.json", keyDecodingStrategy: .convertFromSnakeCase)
+//    "movie/\(movie.id)"
+//      "movie/\(movie.id)/credits"
+
+    @State private var details: MovieDetails?
+    //        Bundle.main.decode(MovieDetails.self, from: "details.json")
+    @State private var credits:  Credits?
+//        Bundle.main.decode(Credits.self, from: "credits.json", keyDecodingStrategy: .convertFromSnakeCase)
+    @State private var requests = Set<AnyCancellable>()
 
     @State private var showingAllCast = false
     @State private var showingAllCrew = false
 
     var displayedCast: [CastMember] {
+        guard let credits = credits else { return [] }
+
         if showingAllCast {
             return credits.cast
         } else {
@@ -26,6 +35,7 @@ struct MovieDetailView: View {
     }
 
     var displayedCrew: [CrewMember] {
+        guard let credits = credits else { return [] }
         if showingAllCrew {
             return credits.crew
         } else {
@@ -47,10 +57,13 @@ struct MovieDetailView: View {
                             .scaledToFit()
                             .frame(maxHeight: 200)
                     }
-                    HStack(spacing: 20) {
-                        Text("Revenue: $\(details.revenue)")
-                        Text("\(details.runtime) minutes")
+                    if let details = details {
+                        HStack(spacing: 20) {
+                            Text("Revenue: $\(details.revenue)")
+                            Text("\(details.runtime) minutes")
+                        }
                     }
+
 
                 }
                 .foregroundColor(.white)
@@ -126,7 +139,22 @@ struct MovieDetailView: View {
 
         .navigationTitle(movie.title)
         .navigationBarTitleDisplayMode(.inline)
+        .onAppear(perform: fetchMovieDetails)
     }
+    func fetchMovieDetails(){
+        let movieRequest = URLSession.shared.get(path: "movie/\(movie.id)", queryItems: [ : ], defaultValue: nil) {
+            downloaded in
+            details = downloaded
+        }
+
+        let creditsRequest = URLSession.shared.get(path: "movie/\(movie.id)/credits", queryItems: [ : ], defaultValue: nil) {
+                downloaded in
+                credits = downloaded
+            }
+        if let movieRequest = movieRequest { requests.insert(movieRequest)}
+        if let creditsRequest = creditsRequest { requests.insert(creditsRequest)}
+    }
+    
 }
 
 struct MovieDetailView_Previews: PreviewProvider {

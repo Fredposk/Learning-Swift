@@ -32,6 +32,7 @@ struct ContentView: View {
             .navigationTitle(Text("MyMovies"))
             .onChange(of: search.debouncedText, perform: runSearch)
         }
+        
     }
 
     func runSearch(criteria: String){

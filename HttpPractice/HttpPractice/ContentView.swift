@@ -33,8 +33,8 @@ struct ContentView: View {
 
     }
     func runSearch(){
-        let urlString = "http://taco-randomizer.herokuapp.com/random/"
-        let url = URL(string: urlString)
+
+        let url = URL(string: "http://taco-randomizer.herokuapp.com/random/")
         DispatchQueue.main.async {
             URLSession.shared.dataTask(with: url!) { data, _, error in
                 if let data = data {

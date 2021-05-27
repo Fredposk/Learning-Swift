@@ -12,8 +12,15 @@ struct CardListView: View {
     @ObservedObject var cardListViewModel: CardListViewModel
 
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        VStack {
+            List(cardListViewModel.studyCards){ card in
+                Text(card.question)
+            }
+            Button("Add Mock Question") {
+                let card = StudyCard(question: "3 + 4", answer: "7")
+                cardListViewModel.add(studyCard: card)
+            }
+        }
     }
 }
 

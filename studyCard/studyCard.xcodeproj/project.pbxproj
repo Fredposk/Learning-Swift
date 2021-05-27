@@ -17,6 +17,8 @@
 		40CF0BE3265909400011569B /* CardRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CF0BE2265909400011569B /* CardRepository.swift */; };
 		40CF0BE526590ABB0011569B /* StudyCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CF0BE426590ABB0011569B /* StudyCard.swift */; };
 		40CF0BE7265910BC0011569B /* CardListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CF0BE6265910BC0011569B /* CardListViewModel.swift */; };
+		40CF0BE9265A697F0011569B /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CF0BE8265A697F0011569B /* CardView.swift */; };
+		40CF0BEB265A69D10011569B /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CF0BEA265A69D10011569B /* CardViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		40CF0BE2265909400011569B /* CardRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRepository.swift; sourceTree = "<group>"; };
 		40CF0BE426590ABB0011569B /* StudyCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyCard.swift; sourceTree = "<group>"; };
 		40CF0BE6265910BC0011569B /* CardListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListViewModel.swift; sourceTree = "<group>"; };
+		40CF0BE8265A697F0011569B /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		40CF0BEA265A69D10011569B /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				40CF0BC92657EFCA0011569B /* CardListView.swift */,
+				40CF0BE8265A697F0011569B /* CardView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -97,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				40CF0BE426590ABB0011569B /* StudyCard.swift */,
+				40CF0BEA265A69D10011569B /* CardViewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -198,7 +204,9 @@
 				40CF0BCA2657EFCA0011569B /* CardListView.swift in Sources */,
 				40CF0BE526590ABB0011569B /* StudyCard.swift in Sources */,
 				40CF0BE3265909400011569B /* CardRepository.swift in Sources */,
+				40CF0BE9265A697F0011569B /* CardView.swift in Sources */,
 				40CF0BC82657EFCA0011569B /* studyCardApp.swift in Sources */,
+				40CF0BEB265A69D10011569B /* CardViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

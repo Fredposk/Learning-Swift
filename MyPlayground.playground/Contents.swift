@@ -142,3 +142,5 @@ hasUniqueCharacters(word: "Frederico")
 var number1: Double = 1
 var number2: Double = 2
 print(number1)
+
+

@@ -9,14 +9,19 @@ import Foundation
 import Combine
 
 class CardListViewModel: ObservableObject {
+
     @Published var cardRepository = CardRepository()
-    @Published var studyCards: [StudyCard] = []
+
+    @Published var cardViewModels: [CardViewModel] = []
 
     private var cancellables: Set<AnyCancellable> = []
 
     init() {
         cardRepository.$studyCard
-            .assign(to: \.studyCards, on: self)
+            .map { studyCard in
+                studyCard.map(CardViewModel.init)
+            }
+            .assign(to: \.cardViewModels, on: self)
             .store(in: &cancellables)
     }
 

@@ -21,7 +21,7 @@ struct ContentView: View {
         NavigationView {
             List {
                 Section(header:
-                            TextField("Search for a movie..", text: $search.text)
+                            TextField("Search for a movie.. ", text: $search.text)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .textCase(.none)
                ) {
@@ -32,8 +32,12 @@ struct ContentView: View {
             .navigationTitle(Text("MyMovies"))
             .onChange(of: search.debouncedText, perform: runSearch)
         }
+//        .onTapGesture {
+//            self.hideKeyboard()
+//        }
         
     }
+
 
     func runSearch(criteria: String){
         request?.cancel()

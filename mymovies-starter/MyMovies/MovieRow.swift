@@ -35,7 +35,8 @@ struct MovieRow: View {
             HStack {
                 image
                 VStack(alignment: .leading) {
-                    Text(movie.title).font(.title2)
+                    Text(movie.title).font(.system(size: 20, weight: .bold, design: .rounded))
+                        .foregroundColor(.black)
                     HStack {
                         Text("Rating: \(movie.voteAverage, specifier: "%g")/10")
                         Text("\(movie.formattedReleaseDate) ")
@@ -45,15 +46,17 @@ struct MovieRow: View {
                         .font(.body.italic())
                 }
             }
+            .padding()
         }
     }
 }
 
 struct MovieRow_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView{
+//        NavigationView {
             MovieRow(movie: .example)
-        }
+//        }
+        .previewLayout(.sizeThatFits)
 
     }
 }

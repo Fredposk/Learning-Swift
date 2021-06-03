@@ -9,6 +9,8 @@ import SwiftUI
 
 @main
 struct MyMoviesApp: App {
+
+    @StateObject private var dataController = DataController()
     var body: some Scene {
         WindowGroup {
             TabView {
@@ -23,6 +25,8 @@ struct MyMoviesApp: App {
                         Image(systemName: "star")
                     }
             }
+            .environment(\.managedObjectContext, dataController.container.viewContext)
+            .environmentObject(dataController)
 
         }
     }

@@ -12,13 +12,11 @@ import Combine
 struct MovieDetailView: View {
     let movie: Movie
 
-//    "movie/\(movie.id)"
-//      "movie/\(movie.id)/credits"
-
+    @EnvironmentObject var dataController: DataController
     @State private var details: MovieDetails?
     //        Bundle.main.decode(MovieDetails.self, from: "details.json")
     @State private var credits:  Credits?
-//        Bundle.main.decode(Credits.self, from: "credits.json", keyDecodingStrategy: .convertFromSnakeCase)
+    //        Bundle.main.decode(Credits.self, from: "credits.json", keyDecodingStrategy: .convertFromSnakeCase)
     @State private var requests = Set<AnyCancellable>()
 
     @State private var showingAllCast = false
@@ -47,7 +45,6 @@ struct MovieDetailView: View {
         ScrollView {
             VStack(alignment: .leading) {
                 VStack(alignment: .leading, spacing: 0) {
-
                     if let path = movie.backdropPath {
                         WebImage(url: URL(string: "https://image.tmdb.org/t/p/w1280\(path)"))
                             .placeholder {
@@ -63,8 +60,6 @@ struct MovieDetailView: View {
                             Text("\(details.runtime) minutes")
                         }
                     }
-
-
                 }
                 .foregroundColor(.white)
                 .font(.caption.bold())
@@ -136,7 +131,17 @@ struct MovieDetailView: View {
         }
 
 
-
+        .toolbar(content: {
+            Button {
+                dataController.toggleFavorite(movie)
+            } label: {
+                if dataController.isFavorite(movie) {
+                    Image(systemName: "heart.fill")
+                } else {
+                    Image(systemName: "heart")
+                }
+            }
+        })
         .navigationTitle(movie.title)
         .navigationBarTitleDisplayMode(.inline)
         .onAppear(perform: fetchMovieDetails)
@@ -148,9 +153,9 @@ struct MovieDetailView: View {
         }
 
         let creditsRequest = URLSession.shared.get(path: "movie/\(movie.id)/credits", queryItems: [ : ], defaultValue: nil) {
-                downloaded in
-                credits = downloaded
-            }
+            downloaded in
+            credits = downloaded
+        }
         if let movieRequest = movieRequest { requests.insert(movieRequest)}
         if let creditsRequest = creditsRequest { requests.insert(creditsRequest)}
     }
@@ -161,6 +166,7 @@ struct MovieDetailView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             MovieDetailView(movie: Movie.example)
+                .environmentObject(DataController(inMemory: true))
         }
 
     }

@@ -37,5 +37,22 @@ extension URLSession {
         }
 
     }
+
+    func post<T: Codable>(_ data: T, to url: URL, completion: @escaping (String) ->Void) -> AnyCancellable {
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+
+        let enconder = JSONEncoder()
+        request.httpBody = try? enconder.encode(data)
+
+        return dataTaskPublisher(for: request)
+            .map { data, response in
+                String(decoding: data, as: UTF8.self)
+            }
+            .replaceError(with: "Decode Error")
+            .receive(on: RunLoop.main)
+            .sink(receiveValue: completion)
+    }
 }
 

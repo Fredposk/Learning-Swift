@@ -22,6 +22,13 @@ struct MovieDetailView: View {
     @State private var showingAllCast = false
     @State private var showingAllCrew = false
 
+    @State private var reviews = [Review]()
+    @State private var reviewText = ""
+
+    var reviewURL: URL? {
+        URL(string: "https://www.hackingwithswift.com/samples/ios-accelerator/\(movie.id)")
+    }
+
     var displayedCast: [CastMember] {
         guard let credits = credits else { return [] }
 
@@ -123,8 +130,26 @@ struct MovieDetailView: View {
                     Button("Show all") {
                         showingAllCrew.toggle()
                     }
-                    .padding()
+                    .padding(.vertical)
                 }
+
+                Text("Reviews")
+                    .font(.title)
+
+                ForEach(reviews) { reviews in
+                    Text(reviews.text)
+                        .font(.body.italic())
+                }
+
+                TextEditor(text: $reviewText)
+                    .frame(height: 200)
+                    .border(Color.gray, width: 1)
+
+                Button("Submit Review") {
+                    submitReview()
+                }
+                .padding()
+
 
             }
 
@@ -158,6 +183,28 @@ struct MovieDetailView: View {
         }
         if let movieRequest = movieRequest { requests.insert(movieRequest)}
         if let creditsRequest = creditsRequest { requests.insert(creditsRequest)}
+
+        guard let reviewUrl = reviewURL else { return  }
+
+        let reviewsRequest = URLSession.shared.fetch(reviewUrl, defaultValue: []) { downloaded in
+            reviews = downloaded
+        }
+        requests.insert(reviewsRequest)
+    }
+
+    func submitReview() {
+        guard reviewText.isEmpty == false else { return }
+
+        let review = Review(id: UUID().uuidString, text: reviewText)
+        guard let reviewURL = reviewURL else { return }
+
+        let request = URLSession.shared.post(review, to: reviewURL) { result in
+            if result == "OK" {
+                reviews.append(review)
+                reviewText = ""
+            }
+        }
+        requests.insert(request)
     }
     
 }

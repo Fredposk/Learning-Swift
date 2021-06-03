@@ -57,7 +57,7 @@ struct CheckoutView: View {
         request.httpMethod = "POST"
         request.httpBody = encoded
 
-        URLSession.shared.dataTask(with: request) { data, URLResponse, Error in
+        URLSession.shared.dataTask(with: request) { data, _, Error in
             guard let data = data else {
                 print("No data in response: \(Error?.localizedDescription ?? "Unkonwn error")")
                 return

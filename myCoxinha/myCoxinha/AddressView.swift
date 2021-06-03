@@ -17,8 +17,11 @@ struct AddressView: View {
             Form {
                 Section(header: Text("enter Details:")) {
                     TextField("Name", text: $order.name)
+                        .textContentType(.name)
                     TextField("Address", text: $order.address)
+                        .textContentType(.fullStreetAddress)
                     TextField("email", text: $order.email)
+                        .textContentType(.emailAddress)
                 }
                 Section {
                     NavigationLink ("Checkout", destination: CheckoutView(order: order))
@@ -26,8 +29,6 @@ struct AddressView: View {
                 }
                 .navigationBarTitle(Text("Delivery Details"), displayMode: .inline)
             }
-
-
 
 
 

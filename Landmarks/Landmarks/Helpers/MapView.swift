@@ -11,10 +11,10 @@ import MapKit
 struct MapView: View {
     var coordinate: CLLocationCoordinate2D
 
-    @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 34.011_286, longitude: -116.166_868), span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2))
+    @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 34.011_286, longitude: -116.166_868), span: MKCoordinateSpan(latitudeDelta: 02, longitudeDelta: 02))
 
     var body: some View {
-        Map(coordinateRegion: $region)
+        Map(coordinateRegion: $region, interactionModes: .all)
             .onAppear(perform: {
                 setRegion(coordinate)
             })

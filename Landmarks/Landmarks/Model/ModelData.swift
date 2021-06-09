@@ -20,4 +20,6 @@ class ModelData: ObservableObject {
     var features: [Landmark] {
         landmarks.filter { $0.isFeatured }
     }
+
+    @Published var profile = Profile.testProfile
 }

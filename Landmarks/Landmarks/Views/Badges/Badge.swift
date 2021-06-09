@@ -13,9 +13,9 @@ struct Badge: View {
             ZStack {
                 BadgeBackground()
                 MyCustomShape()
-                    .frame(width: geo.size.width/1.4, height: geo.size.height/2.6)
-                    .foregroundColor(.secondary)
-                    .offset(y: -180)
+                    .frame(width: 200, height: 200, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                    .foregroundColor(.gray)
+
             }
         }
     }

@@ -26,7 +26,7 @@ struct CategoryRow: View {
                             destination: LandmarkDetailView(landmark: landmark),
                             label: {
                                 CategoryItem(landmark: landmark)
-                                    
+                                    .buttonStyle(PlainButtonStyle())
                             })
                             
 
@@ -34,9 +34,9 @@ struct CategoryRow: View {
 
                     }
                 }
-            }
+            }.frame(height: 185)
         }
-        .frame(height: 185)
+
     }
 }
 

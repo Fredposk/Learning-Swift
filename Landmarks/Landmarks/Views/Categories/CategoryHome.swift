@@ -27,12 +27,10 @@ struct CategoryHome: View {
 
                 ForEach(modelData.categories.keys.sorted(), id: \.self) { key in
                         CategoryRow(categoryName: key, items: modelData.categories[key]!)
+                            
                             .padding(.vertical)
-
             }
-
                 .listStyle(InsetListStyle())
-
             }
             .navigationTitle("Featured")
             .navigationBarItems(trailing: Button(action: {self.isPresented = true}, label: {

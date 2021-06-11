@@ -16,13 +16,14 @@ struct CategoryItem: View {
                     .resizable()
                     .frame(width: 155, height: 155, alignment: .center)
                     .cornerRadius(10)
-                    .overlay(RoundedRectangle(cornerRadius: 10).stroke().shadow(radius: 10))
+
+
                 Text(landmark.name)
                     .font(.caption.bold())
                     .foregroundColor(.primary)
 
             }
-            .padding(15)
+            .padding()
 
     }
 }

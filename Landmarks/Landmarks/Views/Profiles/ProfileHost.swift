@@ -16,18 +16,33 @@ struct ProfileHost: View {
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
+                if editMode?.wrappedValue == .active {
+                    Button(action: {
+                        draftProfile = modelData.profile
+                        editMode?.wrappedValue = .inactive
+                    }) {
+                        Text("Cancel")
+                    }
+                }
                 Spacer()
                 EditButton()
             }
             .padding()
         if editMode?.wrappedValue == .inactive {
-            ProfileSummary(profile: modelData.profile)
+            ProfileSummary(profile: draftProfile)
                 .padding()
         } else {
             ProfileEditor(profile: $draftProfile)
         }
         }
+        .onAppear(perform: {
+            draftProfile = modelData.profile
+        })
+        .onDisappear(perform: {
+            modelData.profile = draftProfile
+        })
     }
+
 }
 
 struct ProfileHost_Previews: PreviewProvider {

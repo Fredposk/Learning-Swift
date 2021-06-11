@@ -41,7 +41,7 @@ struct CategoryHome: View {
             )
         }
         .sheet(isPresented: $isPresented, content: {
-            ProfileSummary(profile: Profile.testProfile)
+            ProfileHost()
         })
     }
 }

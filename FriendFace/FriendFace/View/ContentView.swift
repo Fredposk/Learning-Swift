@@ -10,13 +10,23 @@ import Combine
 
 struct ContentView: View {
 
-    @State private var results = [User]()
+    @EnvironmentObject var dataController: DataController
+    @FetchRequest (entity: SavedUser.entity(), sortDescriptors: [])
+    var fetchedResults: FetchedResults<SavedUser>
+//    @State private var results = [User]()
+    var results: [User] {
+        fetchedResults.map { user in
+            let tags = user.tags?.components(separatedBy: ",")
+            return User(id: user.id ?? "", isActive: user.isActive, name: user.name ?? "", age: Int(user.age), company: user.company ?? "", email: user.email ?? "", address: user.address ?? "", about: user.about ?? "", registered: user.registered ?? "", tags: tags ?? [])
+        }
+    }
     @State private var request: AnyCancellable?
     @State private var showActiveOnly = false
 
     var activeOnly: [User] {
         results.filter { user in
-            user.isActive || !showActiveOnly
+            user.isActive || showActiveOnly == false
+
         }
     }
 
@@ -28,7 +38,6 @@ struct ContentView: View {
                     NavigationLink( "\(user.name)", destination: UserView(user: user))
 
                 }
-
             }
             .navigationTitle("FriendFace")
         }
@@ -42,9 +51,14 @@ struct ContentView: View {
                                 let decoder = JSONDecoder()
                                 decoder.keyDecodingStrategy = .convertFromSnakeCase
                                 let decodedData = try decoder.decode([User].self, from: data)
-                                results = decodedData
+
+                                for user in decodedData {
+                                    dataController.addToCoreData(user)
+                                }
+
+//                                results = decodedData
                             } catch {
-                                results = [User.testUser]
+//                                results = []
                             }
                         }
                     }.resume()
@@ -59,5 +73,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .environmentObject(DataController(inMemory: true))
     }
 }

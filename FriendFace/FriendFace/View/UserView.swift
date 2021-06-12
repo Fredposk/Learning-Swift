@@ -27,7 +27,6 @@ struct UserView: View {
                 }
                 .font(.title)
                 .padding(.vertical)
-
                 HStack() {
                     Text("Age: \(user.age)")
                     Spacer()
@@ -52,7 +51,7 @@ struct UserView: View {
                             .rotationEffect(.degrees(showAddress ? 90 : 0))
                             .padding()
                     }
-                    }
+                }
                 if showAddress {
                     Text(user.address)
                         .transition(.opacity)
@@ -61,24 +60,29 @@ struct UserView: View {
                     HStack {
                         ForEach(user.tags, id: \.self) { tag in
                             Text(tag)
-                            .foregroundColor(.white)
-                            .padding(.horizontal, 10)
-                            .padding(.vertical, 4)
+                                .foregroundColor(.white)
+                                .padding(.horizontal, 10)
+                                .padding(.vertical, 4)
                                 .background(Color.blue)
-                            .clipShape(Capsule())
+                                .clipShape(Capsule())
                         }
                     }
                 }
 
                 Text(user.about)
 
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack {
-                        ForEach(user.friends, id: \.id) { friend in
-                            Text(friend.name)
-                        }
-                    }
-                }
+//                ScrollView(.horizontal, showsIndicators: false) {
+//                    HStack {
+//                        ForEach(user.friends, id: \.id) { friend in
+//                            NavigationLink(
+//                                destination: Text(friend.name)) {
+//                                Text(friend.name)
+//                                padding(.top)
+//                            }
+//
+//                        }
+//                    }
+//                }
                 Spacer()
 
 

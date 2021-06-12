@@ -7,9 +7,10 @@
 
 import Foundation
 
-struct Results: Codable {
-    let URLResults: [User]
-}
+
+
+
+
 
 // MARK: - FriendFaceElement
 struct User: Codable, Identifiable {
@@ -20,7 +21,7 @@ struct User: Codable, Identifiable {
     let company, email, address, about: String
     let registered: String
     let tags: [String]
-    let friends: [Friend]
+//    let friends: [Friend]
 
 
     var formattedRegisteredDate: String {
@@ -45,7 +46,10 @@ struct Friend: Codable {
                                         "eiusmod",
                                         "minim",
                                         "tempor"
-                                     ], friends: [Friend(id: "91b5be3d-9a19-4ac2-b2ce-89cc41884ed0", name: "Hawkins Patel")])
+                                     ]
+//        ,
+//        friends: [Friend(id: "91b5be3d-9a19-4ac2-b2ce-89cc41884ed0", name: "Hawkins Patel")]
+        )
 
 }
 

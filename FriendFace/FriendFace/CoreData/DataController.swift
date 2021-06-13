@@ -45,15 +45,12 @@ class DataController: ObservableObject {
         savedUser.address = user.address
         savedUser.registered = user.registered
         savedUser.age = Int16(user.age)
-//        savedUser.friends = user.friends.map({ friend in
-//            String(friend)
-//        })
+//        savedUser.friends = String(user.friends)
+//            user.friends.map(\.id).joined(separator: ",")
         savedUser.tags = user.tags.joined(separator: ",")
 
 save()
 
     }
-
-
     
 }

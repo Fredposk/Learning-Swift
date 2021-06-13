@@ -13,10 +13,10 @@ struct ContentView: View {
     @EnvironmentObject var dataController: DataController
     @FetchRequest (entity: SavedUser.entity(), sortDescriptors: [])
     var fetchedResults: FetchedResults<SavedUser>
-//    @State private var results = [User]()
     var results: [User] {
         fetchedResults.map { user in
             let tags = user.tags?.components(separatedBy: ",")
+//            let friends = user.friends?.components(separatedBy: ",")
             return User(id: user.id ?? "", isActive: user.isActive, name: user.name ?? "", age: Int(user.age), company: user.company ?? "", email: user.email ?? "", address: user.address ?? "", about: user.about ?? "", registered: user.registered ?? "", tags: tags ?? [])
         }
     }
@@ -35,7 +35,7 @@ struct ContentView: View {
             List {
                 Toggle("Active Only", isOn: $showActiveOnly)
                 ForEach(activeOnly) { user in
-                    NavigationLink( "\(user.name)", destination: UserView(user: user))
+                    NavigationLink( "\(user.name)", destination: UserView(userId: user.id, results: results))
 
                 }
             }

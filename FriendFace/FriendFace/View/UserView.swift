@@ -11,11 +11,23 @@ struct UserView: View {
 
 
 
-    var user: User
+    var userId: String?
+    var results: [User]
+
+    var user: User {
+        guard userId != nil else { return User.testUser}
+
+//        return dataController.UserDetails(for: userId!)
+        
+        return results.first(where: { user in
+            user.id == userId
+        })!
+
+        
+    }
 
     @State private var showAddress = false
     var body: some View {
-
 
         ScrollView(/*@START_MENU_TOKEN@*/.vertical/*@END_MENU_TOKEN@*/, showsIndicators: false) {
             VStack(alignment: .leading) {
@@ -95,8 +107,4 @@ struct UserView: View {
     }
 }
 
-struct UserView_Previews: PreviewProvider {
-    static var previews: some View {
-        UserView(user: User.testUser)
-    }
-}
+

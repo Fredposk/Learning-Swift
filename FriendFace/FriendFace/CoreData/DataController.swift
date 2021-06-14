@@ -15,6 +15,8 @@ class DataController: ObservableObject {
     init(inMemory: Bool = false){
         container = NSPersistentContainer(name: "Main")
 
+        container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+
         if inMemory {
             container.persistentStoreDescriptions.first?.url = URL(fileURLWithPath: "/dev/null")
         }

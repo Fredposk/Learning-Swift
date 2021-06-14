@@ -11,8 +11,7 @@ import Combine
 struct ContentView: View {
 
     @EnvironmentObject var dataController: DataController
-    @FetchRequest (entity: SavedUser.entity(), sortDescriptors: [])
-    var fetchedResults: FetchedResults<SavedUser>
+    @FetchRequest (entity: SavedUser.entity(), sortDescriptors: []) var fetchedResults: FetchedResults<SavedUser>
     var results: [User] {
         fetchedResults.map { user in
             let tags = user.tags?.components(separatedBy: ",")

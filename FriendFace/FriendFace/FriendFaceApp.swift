@@ -6,11 +6,13 @@
 //
 
 import SwiftUI
+import CoreData
 
 @main
 struct FriendFaceApp: App {
 
 @StateObject private var dataController = DataController()
+    
 
     var body: some Scene {
         WindowGroup {

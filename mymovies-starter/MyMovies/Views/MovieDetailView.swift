@@ -73,28 +73,13 @@ struct MovieDetailView: View {
                 .frame(maxWidth: .infinity)
                 .padding()
                 .background(Color.black)
-
-            }
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 3) {
-                    ForEach(movie.genres) { genre in
-                        Text(genre.name)
-                            .foregroundColor(.white)
-                            .padding(.horizontal, 10)
-                            .padding(.vertical, 2)
-                            .background(Color(genre.color))
-                            .clipShape(Capsule())
-
-                    }
-                }
-            }.padding(.horizontal, 20)
+                GenresView(movie: movie)
             Text(movie.overview)
                 .padding([.horizontal, .bottom])
 
             Group {
                 Text("Cast")
                     .font(.title)
-
                 ForEach(displayedCast) { person in
                     VStack(alignment: .leading){
                         Text(person.name)
@@ -111,7 +96,6 @@ struct MovieDetailView: View {
                         }
                     }
                     .padding(.vertical)
-
                 }
 
                 Text("Crew")
@@ -132,29 +116,29 @@ struct MovieDetailView: View {
                     }
                     .padding(.vertical)
                 }
-
-                Text("Reviews")
-                    .font(.title)
-
-                ForEach(reviews) { reviews in
-                    Text(reviews.text)
-                        .font(.body.italic())
-                }
-
-                TextEditor(text: $reviewText)
-                    .frame(height: 200)
-                    .border(Color.gray, width: 1)
-
-                Button("Submit Review") {
-                    submitReview()
-                }
-                .padding()
-
-
             }
+            .lineLimit(1)
+            .padding(.horizontal)
+            }
+                VStack {
+                    Text("Reviews")
+                        .font(.title)
 
-        }
+                    ForEach(reviews) { reviews in
+                        Text(reviews.text)
+                            .font(.body.italic())
+                    }
 
+                    TextEditor(text: $reviewText)
+                        .frame(height: 200)
+                        .border(Color.gray, width: 1)
+
+                    Button("Submit Review") {
+                        submitReview()
+                    }
+                    .padding()
+                }
+            }
 
         .toolbar(content: {
             Button {
@@ -218,3 +202,4 @@ struct MovieDetailView_Previews: PreviewProvider {
 
     }
 }
+

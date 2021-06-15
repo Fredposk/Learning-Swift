@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		400EB9D52678ADEE005D0992 /* ImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400EB9D42678ADEE005D0992 /* ImageSaver.swift */; };
 		40825D3D267740EF009246AA /* instasFilterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40825D3C267740EF009246AA /* instasFilterApp.swift */; };
 		40825D3F267740EF009246AA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40825D3E267740EF009246AA /* ContentView.swift */; };
 		40825D41267740F0009246AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40825D40267740F0009246AA /* Assets.xcassets */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		400EB9D42678ADEE005D0992 /* ImageSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaver.swift; sourceTree = "<group>"; };
 		40825D39267740EF009246AA /* instasFilter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = instasFilter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		40825D3C267740EF009246AA /* instasFilterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = instasFilterApp.swift; sourceTree = "<group>"; };
 		40825D3E267740EF009246AA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -57,6 +59,7 @@
 				40825D3C267740EF009246AA /* instasFilterApp.swift */,
 				40825D3E267740EF009246AA /* ContentView.swift */,
 				40825D4B2677506B009246AA /* ImagePicker.swift */,
+				400EB9D42678ADEE005D0992 /* ImageSaver.swift */,
 				40825D40267740F0009246AA /* Assets.xcassets */,
 				40825D45267740F0009246AA /* Info.plist */,
 				40825D42267740F0009246AA /* Preview Content */,
@@ -144,6 +147,7 @@
 				40825D4C2677506B009246AA /* ImagePicker.swift in Sources */,
 				40825D3F267740EF009246AA /* ContentView.swift in Sources */,
 				40825D3D267740EF009246AA /* instasFilterApp.swift in Sources */,
+				400EB9D52678ADEE005D0992 /* ImageSaver.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
